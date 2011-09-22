@@ -1,0 +1,1 @@
+ffmpeg -i ../0.flv -r 10 -f image2 '%d.jpeg'
