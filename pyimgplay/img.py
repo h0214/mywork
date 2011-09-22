@@ -32,21 +32,25 @@ def gen_char_img(data, t_name):
     """
     position = 1
     with open(t_name, "w") as f:
-        for x in data:
+        for x, y, z in data:
             if position > LEN :
                 f.write("\n")
                 position = 1
             # char style
-            if sum(x):
-                if sum(x) > 100: f.write("*")
-                else: f.write("%")
-            else:
-                f.write(" ")
+            f.write(char_style(x, y, z))
             position += 1
 
     os.system("rm " + t_name[:-3] + "jpg")
     print t_name, " done ..."
 
+def char_style(x, y, z):
+    """char style
+    """
+    if x > 155: return " "
+    elif y > 155: return "%"
+    elif z > 155: return "@"
+
+    return "*"
 
 def main():
     resize_img()
